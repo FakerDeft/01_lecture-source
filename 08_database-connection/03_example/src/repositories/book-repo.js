@@ -90,9 +90,9 @@ exports.updateBook = (connection, bookTitle, newBook) => {
   });
 };
 
-exports.deleteBook = (connection, bookTitle) => {
+exports.deleteBook = (connection, bookNo) => {
   return new Promise((resolve, reject) => {
-    connection.query(bookQuery.registNewBook(), [bookTitle], (err, result) => {
+    connection.query(bookQuery.deleteBook(), [bookNo], (err, result) => {
       if (err) {
         reject(err);
       }

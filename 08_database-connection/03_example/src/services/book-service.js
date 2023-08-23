@@ -82,7 +82,7 @@ exports.updateBook = (book) => {
         bookTitle,
         book
       ); // promise
-
+      connection.commit();
       resolve(result);
     } catch (err) {
       connection.rollback();
@@ -96,15 +96,15 @@ exports.updateBook = (book) => {
   });
 };
 
-exports.deleteBook = (bookTitle) => {
+exports.deleteBook = (bookNo) => {
   return new Promise(async (resolve, reject) => {
     const connection = getConnection();
 
     connection.beginTransaction();
 
     try {
-      const result = await BookRepository.deleteBook(connection, bookTitle);
-
+      const result = await BookRepository.deleteBook(connection, bookNo);
+      connection.commit();
       resolve(result);
     } catch (err) {
       connection.rollback();

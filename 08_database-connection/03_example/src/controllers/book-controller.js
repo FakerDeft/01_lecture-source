@@ -41,7 +41,6 @@ exports.findBookByBookNo = async (req, res, next) => {
 };
 
 exports.findBookByBookTitle = async (req, res, next) => {
-  console.log(decodeURIComponent(req.params.bookTitle));
   const book = await BookService.findBookByBookTitle(
     decodeURIComponent(req.params.bookTitle)
   );
@@ -144,7 +143,7 @@ exports.updateBook = async (req, res, next) => {
 };
 
 exports.deleteBook = async (req, res, next) => {
-  const result = await BookService.deleteBook(req.params.bookTitle);
+  const result = await BookService.deleteBook(req.params.bookNo);
 
   if (result) {
     res.status(HttpStatus.OK).send({

@@ -17,7 +17,7 @@ exports.findBookByBookTitle = () => {
   return `
           SELECT * 
           FROM TBL_BOOK
-          WHERE BOOK_Title = ?
+          WHERE Book_Title = ?
       `;
 };
 
@@ -52,6 +52,6 @@ exports.updateBook = () => {
 exports.deleteBook = () => {
   return `
       DELETE FROM TBL_BOOK
-      WHERE BOOK_TITLE =?
+      WHERE book_no =?
   `;
 };
